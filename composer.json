@@ -13,14 +13,16 @@
         "illuminate/database": "^5.6",
         "illuminate/notifications": "^5.6",
         "illuminate/auth": "^5.6",
-        "illuminate/support": "^5.6"
+        "illuminate/support": "^5.6",
+        "mykeels/laravel-filters": "dev-master"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.3"
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpstan/phpstan": "^0.10.2"
     },
     "autoload": {
         "psr-4": {
-            "CollegePortal\\Filters\\": "src/"
+            "CollegePortal\\Models\\": "src/"
         }
     },
     "scripts": {
