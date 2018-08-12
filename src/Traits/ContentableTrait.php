@@ -6,6 +6,11 @@ use CollegePortal\Models\Content;
 
 trait ContentableTrait
 {
+    /**
+     * Returns a query builder for CollegePortal\Models\Content
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Content
+     */
     public function contents()
     {
         return $this->hasMany(Content::class, 'owner_id')->whereHas('type', function ($q) {

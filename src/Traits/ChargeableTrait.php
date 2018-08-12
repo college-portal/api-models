@@ -11,7 +11,7 @@ trait ChargeableTrait
     /**
      * Returns a query builder for CollegePortal\Models\Chargeable
      *
-     * @return Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Chargeable
+     * @return \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Chargeable
      */
     public function scopeChargeables()
     {
@@ -23,7 +23,7 @@ trait ChargeableTrait
     /**
      * Returns a query builder for CollegePortal\Models\ChargeableService
      *
-     * @return Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\ChargeableService
+     * @return \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\ChargeableService
      */
     public function scopeChargeableServices($query, $school_id)
     {
