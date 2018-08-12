@@ -3,6 +3,7 @@
 namespace CollegePortal\Models\Traits;
 
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 trait AuthorizableTrait
 {
