@@ -1,0 +1,23 @@
+{
+    "name": "college-portal/api-models",
+    "description": "Models for Database Tables and Views for the College-Portal project",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ikechi Michael",
+            "email": "mykehell123@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^5.6",
+        "illuminate/notifications": "^5.6",
+        "illuminate/auth": "^5.6",
+        "illuminate/support": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CollegePortal\\Filters\\": "src/"
+        }
+    }
+}
