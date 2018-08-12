@@ -2,6 +2,10 @@
 
 This laravel package contains Eloquent Models and Traits and help power data-access for the College-Portal project.
 
+## Setup
+
+- Run `composer require college-portal/api-models` in your terminal to pull the package in.
+
 ## Standards
 
 - This package is built and linted with the PSR-2 standard.
