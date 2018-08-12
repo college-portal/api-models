@@ -1,0 +1,38 @@
+API Index
+=========
+
+* CollegePortal
+    * CollegePortal\Models
+        * [IntentType](CollegePortal-Models-IntentType.md)
+        * [Semester](CollegePortal-Models-Semester.md)
+        * [Event](CollegePortal-Models-Event.md)
+        * [ImageType](CollegePortal-Models-ImageType.md)
+        * [Group](CollegePortal-Models-Group.md)
+        * [School](CollegePortal-Models-School.md)
+        * [Grade](CollegePortal-Models-Grade.md)
+        * [Session](CollegePortal-Models-Session.md)
+        * [StaffTeachCourse](CollegePortal-Models-StaffTeachCourse.md)
+        * [User](CollegePortal-Models-User.md)
+        * [UserHasRole](CollegePortal-Models-UserHasRole.md)
+        * [Invite](CollegePortal-Models-Invite.md)
+        * [InviteRole](CollegePortal-Models-InviteRole.md)
+        * [Student](CollegePortal-Models-Student.md)
+        * [Faculty](CollegePortal-Models-Faculty.md)
+        * [Level](CollegePortal-Models-Level.md)
+        * [AssetType](CollegePortal-Models-AssetType.md)
+        * [Prospect](CollegePortal-Models-Prospect.md)
+        * [CourseDependency](CollegePortal-Models-CourseDependency.md)
+        * [Course](CollegePortal-Models-Course.md)
+        * [Department](CollegePortal-Models-Department.md)
+        * [SemesterType](CollegePortal-Models-SemesterType.md)
+        * [ProgramCredit](CollegePortal-Models-ProgramCredit.md)
+        * [Program](CollegePortal-Models-Program.md)
+        * [GradeType](CollegePortal-Models-GradeType.md)
+        * [ChargeableService](CollegePortal-Models-ChargeableService.md)
+        * [Payable](CollegePortal-Models-Payable.md)
+        * [StudentTakesCourse](CollegePortal-Models-StudentTakesCourse.md)
+        * [Image](CollegePortal-Models-Image.md)
+        * [Staff](CollegePortal-Models-Staff.md)
+        * [BaseModel](CollegePortal-Models-BaseModel.md)
+        * [Asset](CollegePortal-Models-Asset.md)
+
