@@ -85,10 +85,10 @@ class ContentType extends BaseModel
             if ($model->related_to) {
                 $parent = $model->parent()->first();
                 if (!$parent) {
-                    throw \Exception("no parent exists for content_type $model");
+                    throw new \Exception("no parent exists for content_type $model");
                 }
                 if ($parent->format != self::OBJECT) {
-                    throw \Exception("only content_type with format 'object' can have children");
+                    throw new \Exception("only content_type with format 'object' can have children");
                 }
                 $model->type = $parent->type;
             }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace CollegePortal\Models;
 
 use Illuminate\Notifications\Notifiable;
 use CollegePortal\Models\Traits\ModelTableNameTrait;
 use CollegePortal\Models\Traits\FullNameTrait;
-use CollegePortal\Models\Traits\FilterableTrait;
 use CollegePortal\Models\Traits\AuthorizableTrait;
+use CollegePortal\Models\BaseModel;
 use CollegePortal\Models\Role;
 use CollegePortal\Models\School;
 use CollegePortal\Models\Staff;
@@ -48,9 +48,9 @@ use CollegePortal\Models\Intent;
  * @method static \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\ChargeableService whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends BaseModel
 {
-    use Notifiable, ModelTableNameTrait, FullNameTrait, FilterableTrait, AuthorizableTrait;
+    use Notifiable, ModelTableNameTrait, FullNameTrait, AuthorizableTrait;
 
     /**
      * The attributes that are mass assignable.

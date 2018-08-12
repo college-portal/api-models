@@ -2,7 +2,7 @@
 
 namespace CollegePortal\Models;
 
-use CollegePortal\Models\Traits\FilterableTrait;
+use Mykeels\Filters\Traits\FilterableTrait;
 use CollegePortal\Models\Traits\ContentableTrait;
 use CollegePortal\Models\Traits\AssetableTrait;
 use CollegePortal\Models\Traits\ImageableTrait;
