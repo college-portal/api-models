@@ -14,12 +14,12 @@
         "illuminate/notifications": "^5.6",
         "illuminate/auth": "^5.6",
         "illuminate/support": "^5.6",
+        "illuminate/contracts": "^5.6",
         "mykeels/laravel-filters": "dev-master"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.3",
         "phpstan/phpstan": "^0.10.2",
-        "phpdocumentor/phpdocumentor": "2.9.0",
         "evert/phpdoc-md": "^0.2.0"
     },
     "autoload": {
