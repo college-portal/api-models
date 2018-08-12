@@ -1,0 +1,4 @@
+parameters:
+	ignoreErrors:
+		- '#Function app not found.#'
+		- '#Function bcrypt not found.#'
