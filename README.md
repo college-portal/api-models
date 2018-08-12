@@ -9,3 +9,7 @@ This laravel package contains Eloquent Models and Traits and help power data-acc
   - Run `composer run fix-lint` to fix linter errors
 - A static analyser is used to make sure code works statically.
   - Run `composer run analyse` to verify.
+
+## Documentation
+
+See [Code Documentation](./docs).

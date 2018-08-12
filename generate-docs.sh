@@ -7,4 +7,4 @@ fi
 
 php ./vendor/bin/phpDocumentor.phar -d ./src/ -t generated-docs  --template=xml
 
-./vendor/bin/phpdocmd generated-docs/structure.xml ./docs
+./vendor/bin/phpdocmd generated-docs/structure.xml ./docs --index README.md
