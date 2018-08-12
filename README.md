@@ -12,4 +12,6 @@ This laravel package contains Eloquent Models and Traits and help power data-acc
 
 ## Documentation
 
-See [Code Documentation](./docs).
+See [Code Documentation](./docs), which is generated with [this package](https://github.com/evert/phpdoc-md).
+
+To generate the docs after making code changes, run `composer run docs`
