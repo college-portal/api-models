@@ -1,4 +1,4 @@
-# CollegePortal\Models
+# CollegePortal Models
 
 This laravel package contains Eloquent Models and Traits and help power data-access for the College-Portal project.
 
@@ -10,7 +10,7 @@ This laravel package contains Eloquent Models and Traits and help power data-acc
 - A static analyser is used to make sure code works statically.
   - Run `composer run analyse` to verify.
 
-## Documentation
+## Code Documentation
 
 See [Code Documentation](./docs), which is generated with [this package](https://github.com/evert/phpdoc-md).
 
