@@ -6,8 +6,8 @@ use CollegePortal\Models\BaseModel;
 
 /**
  * CollegePortal\Models\AssetType
- * 
- * An AssetType represents file types belongs to a model, 
+ *
+ * An AssetType represents file types belongs to a model,
  *  denoted by the $type property.
  * E.g. the Prospect model having waec-result as an AssetType
  *
@@ -28,7 +28,8 @@ class AssetType extends BaseModel
 {
     protected $fillable = [ 'type', 'name', 'school_id' ];
 
-    public function assets() {
+    public function assets()
+    {
         return $this->hasMany(Asset::class, 'asset_type_id');
     }
 

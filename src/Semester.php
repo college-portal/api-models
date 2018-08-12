@@ -10,8 +10,8 @@ use CollegePortal\Models\Traits\ChargeableTrait;
 
 /**
  * CollegePortal\Models\Semester
- * 
- * A Semester represents a time period, marked by start and end dates, 
+ *
+ * A Semester represents a time period, marked by start and end dates,
  *  within a Session, and belonging to a Semester Type.
  *
  * @property int $id
@@ -31,26 +31,31 @@ class Semester extends BaseModel
     use ChargeableTrait;
     protected $fillable = [ 'semester_type_id', 'session_id', 'start_date', 'end_date' ];
 
-    public function session() {
+    public function session()
+    {
         return $this->belongsTo(Session::class);
     }
 
-    public function school() {
+    public function school()
+    {
         $ids = $this->type->pluck('id');
         return School::whereHas('semesterTypes', function ($q) use ($ids) {
             return $q->whereIn('id', $ids);
         });
     }
 
-    public function type() {
+    public function type()
+    {
         return $this->belongsTo(SemesterType::class, 'semester_type_id');
     }
 
-    public function programCredits() {
+    public function programCredits()
+    {
         return $this->hasMany(ProgramCredit::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->programCredits()->get()->map(function ($programCredit) {

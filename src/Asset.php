@@ -7,7 +7,7 @@ use CollegePortal\Models\AssetType;
 
 /**
  * CollegePortal\Models\Asset
- * 
+ *
  * An Asset represents a particular file that belongs to an AssetType
  *
  * @property int $id
@@ -25,7 +25,7 @@ use CollegePortal\Models\AssetType;
  */
 class Asset extends BaseModel
 {
-    protected $fillable = ['owner_id', 'asset_type_id', 'location', 'mime', 'size'];  
+    protected $fillable = ['owner_id', 'asset_type_id', 'location', 'mime', 'size'];
 
     public function type()
     {

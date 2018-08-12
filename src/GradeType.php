@@ -7,7 +7,7 @@ use CollegePortal\Models\School;
 
 /**
  * CollegePortal\Models\GradeType
- * 
+ *
  * A GradeType is a classification for grade scores. E.g. a score between 70 and 100 is an A.
  *
  * @property int $id
@@ -28,7 +28,8 @@ class GradeType extends BaseModel
 {
     protected $fillable = [ 'name', 'value', 'school_id', 'minimum', 'maximum' ];
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 }

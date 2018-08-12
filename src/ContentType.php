@@ -9,19 +9,19 @@ use CollegePortal\Models\Traits\ContentTypeTrait;
 
 /**
  * CollegePortal\Models\ContentType
- * 
+ *
  * Description:
- *  Content Types are a way to extend the properties of any model, 
+ *  Content Types are a way to extend the properties of any model,
  *    without needed to write a migration.
- *  A Content Type represents an extension of a model, 
- *   denoted by the $type property. 
- * 
+ *  A Content Type represents an extension of a model,
+ *   denoted by the $type property.
+ *
  * E.g. A User model can have a content-type called "phone" which has an "string" format.
- * 
+ *
  * ContentType Formats:
- * 
+ *
  * A Content Type can take one of many formats, including:
- * 
+ *
  * - string: its content value must be a string
  * - number: its content value must be a number
  * - boolean: its content value must resolve to true/false
@@ -68,21 +68,28 @@ class ContentType extends BaseModel
         return app($this->type)->where('id', $owner_id);
     }
 
-    public function parent() {
+    public function parent()
+    {
         return $this->belongsTo(self::class, 'related_to');
     }
 
-    public function children() {
+    public function children()
+    {
         return $this->hasMany(self::class, 'related_to');
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::creating(function ($model) {
             if ($model->related_to) {
                 $parent = $model->parent()->first();
-                if (!$parent) throw \Exception("no parent exists for content_type $model");
-                if ($parent->format != self::OBJECT) throw \Exception("only content_type with format 'object' can have children");
+                if (!$parent) {
+                    throw \Exception("no parent exists for content_type $model");
+                }
+                if ($parent->format != self::OBJECT) {
+                    throw \Exception("only content_type with format 'object' can have children");
+                }
                 $model->type = $parent->type;
             }
         });

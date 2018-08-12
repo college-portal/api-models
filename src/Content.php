@@ -8,8 +8,8 @@ use CollegePortal\Models\School;
 
 /**
  * CollegePortal\Models\Content
- * 
- * A Content represents a value property for a particular model, 
+ *
+ * A Content represents a value property for a particular model,
  *  belonging to a content-type.
  *
  * @property int $id
@@ -33,7 +33,8 @@ class Content extends BaseModel
         return $this->belongsTo(ContentType::class, 'content_type_id');
     }
 
-    public function scopeChildren($query) {
+    public function scopeChildren($query)
+    {
         return $query->whereHas('type', function ($q) {
             return $q->where('related_to', $this->content_type_id);
         });
@@ -50,23 +51,25 @@ class Content extends BaseModel
         return School::whereIn('id', $ids);
     }
 
-    public function setValueAttribute($value) {
+    public function setValueAttribute($value)
+    {
         if (!is_string($value)) {
             $this->attributes['value'] = json_encode($value);
-        }
-        else {
+        } else {
             $this->attributes['value'] = $value;
         }
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::creating(function ($model) {
             $type = $model->type()->first();
             if (($type->format($model->value) != $type->format) && ($type->format != ContentType::ARRAY)) {
                 throw new \Exception("content type for $model->value should be $type->format");
             }
-            if (self::where('content_type_id', $model->content_type_id)->exists() && ($type->format != ContentType::ARRAY)) {
+            if (self::where('content_type_id', $model->content_type_id)->exists() &&
+                  $type->format != ContentType::ARRAY) {
                 throw new \Exception("only content_type with 'array' format can have multiple values");
             }
             if (!$model->owner()->exists()) {

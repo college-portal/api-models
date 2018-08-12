@@ -7,7 +7,7 @@ use CollegePortal\Models\ImageType;
 
 /**
  * CollegePortal\Models\Image
- * 
+ *
  * An Image represents a particular jpeg/png/etc resource belonging to an Image Type
  *
  * @property int $id
@@ -26,15 +26,18 @@ class Image extends BaseModel
 {
     protected $fillable = [ 'owner_id', 'image_type_id' ];
 
-    public function type() {
+    public function type()
+    {
         return $this->belongsTo(ImageType::class, 'image_type_id');
     }
 
-    public function scopeOwner() {
+    public function scopeOwner()
+    {
         return app($this->type()->first()->type)->where('id', $this->owner_id);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->type()->pluck('school_id');
         return School::whereIn('id', $ids);
     }

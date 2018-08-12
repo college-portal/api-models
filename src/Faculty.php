@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * CollegePortal\Models\Faculty
- * 
+ *
  * A Faculty is a division within a School comprising one or more departments.
  *
  * @property int $id
@@ -38,69 +38,81 @@ class Faculty extends BaseModel
 
     protected $fillable = [ 'name', 'school_id', 'dean_id' ];
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public function dean() {
+    public function dean()
+    {
         return $this->belongsTo(Staff::class, 'dean_id');
     }
 
-    public function deans() {
+    public function deans()
+    {
         return $this->belongsToMany(Staff::class, self::name(), 'id', 'dean_id');
     }
 
-    public function departments() {
+    public function departments()
+    {
         return $this->hasMany(Department::class);
     }
 
-    public function programs() {
+    public function programs()
+    {
         return $this->hasManyThrough(Program::class, Department::class);
     }
 
-    public function students() {
+    public function students()
+    {
         return $this->programs()
                     ->join(Student::name(), 'students.program_id', '=', 'programs.id')
                     ->select('students.*');
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->departments()
                     ->join(Staff::name(), 'staff.department_id', '=', 'departments.id')
                     ->select('staff.*');
     }
 
-    public function users() {
+    public function users()
+    {
         return $this->students()
                 ->join(User::name(), 'students.user_id', '=', 'users.id')
-                ->select('users.id', 
-                            'users.display_name',  
-                            'users.created_at', 
-                            'users.updated_at'
-                        )
+                ->select(
+                    'users.id',
+                    'users.display_name',
+                    'users.created_at',
+                    'users.updated_at'
+                )
                 ->union(
                     $this->deans()
                         ->join(User::name(), 'staff.user_id', '=', 'users.id')
-                        ->select('users.id', 
-                                    'users.display_name',  
-                                    'users.created_at', 
-                                    'users.updated_at',
-                                    'faculties.id as faculty_id'
-                                )
+                        ->select(
+                            'users.id',
+                            'users.display_name',
+                            'users.created_at',
+                            'users.updated_at',
+                            'faculties.id as faculty_id'
+                        )
                 )
                 ->union(
                     $this->staff()
                                 ->join(User::name(), 'staff.user_id', '=', 'users.id')
-                                ->select('users.id', 
-                                            'users.display_name',  
-                                            'users.created_at', 
-                                            'users.updated_at',
-                                            'departments.faculty_id'
-                                        )
-                ); 
+                                ->select(
+                                    'users.id',
+                                    'users.display_name',
+                                    'users.created_at',
+                                    'users.updated_at',
+                                    'departments.faculty_id'
+                                )
+                );
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         $schoolHasUsersUpdate = function ($model) {
             $role = Role::where('name', Role::DEAN)->first();

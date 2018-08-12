@@ -10,11 +10,11 @@ use CollegePortal\Models\BaseModel;
 
 /**
  * CollegePortal\Models\Prospect
- * 
+ *
  * A Prospect is a User who is an admission candidate to a particular School,
  *  in a particular Program and targeting a particular Session.
- * 
- * A Prospect can be locked for editing by a school-owner, similar to closing the 
+ *
+ * A Prospect can be locked for editing by a school-owner, similar to closing the
  *  admission process.
  *
  * @property int $id
@@ -38,23 +38,28 @@ class Prospect extends BaseModel
 {
     protected $fillable = [ 'user_id', 'school_id', 'program_id', 'session_id', 'locked_at', 'accepted_at' ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public function program() {
+    public function program()
+    {
         return $this->belongsTo(Program::class);
     }
 
-    public function session() {
+    public function session()
+    {
         return $this->belongsTo(Session::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         $createProspectRole = function ($model) {
             $school = $model->school()->first();

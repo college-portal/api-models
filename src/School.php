@@ -21,7 +21,7 @@ use Carbon\Carbon;
 
 /**
  * CollegePortal\Models\School
- * 
+ *
  * A School represents a tertiary institution.
  *
  * @property int $id
@@ -42,44 +42,54 @@ class School extends BaseModel
 
     protected $fillable = [ 'name', 'short_name', 'owner_id' ];
 
-    public function owner() {
+    public function owner()
+    {
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany(User::class, UserHasRole::name())->withTimestamps();
     }
 
-    public function faculties() {
+    public function faculties()
+    {
         return $this->hasMany(Faculty::class);
     }
 
-    public function gradeTypes() {
+    public function gradeTypes()
+    {
         return $this->hasMany(GradeType::class);
     }
 
-    public function chargeableServices() {
+    public function chargeableServices()
+    {
         return $this->hasMany(ChargeableService::class);
     }
 
-    public function imageTypes() {
+    public function imageTypes()
+    {
         return $this->hasMany(ImageType::class);
     }
 
-    public function contentTypes() {
+    public function contentTypes()
+    {
         return $this->hasMany(ContentType::class);
     }
 
-    public function invites() {
+    public function invites()
+    {
         return $this->hasMany(Invite::class);
     }
 
-    public function scopeDepartments() {
+    public function scopeDepartments()
+    {
         $ids = $this->faculties()->pluck('id');
         return Department::whereIn('faculty_id', $ids);
     }
 
-    public function currentSession($date = null) {
+    public function currentSession($date = null)
+    {
         $date = $date ?? Carbon::now();
         return $this->sessions()->where([
             [ 'start_date', '<=', $date ],
@@ -87,23 +97,28 @@ class School extends BaseModel
         ]);
     }
 
-    public function sessions() {
+    public function sessions()
+    {
         return $this->hasMany(Session::class);
     }
 
-    public function semesterTypes() {
+    public function semesterTypes()
+    {
         return $this->hasMany(SemesterType::class);
     }
 
-    public function levels() {
+    public function levels()
+    {
         return $this->hasMany(Level::class);
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->hasMany(Staff::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         $schoolOwnerRoleCreate = function ($model) {
             /** create school-owner user role */

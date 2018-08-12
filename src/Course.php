@@ -14,8 +14,8 @@ use CollegePortal\Models\StaffTeachCourse;
 
 /**
  * CollegePortal\Models\Course
- * 
- * A Course represents a subject, managed by a department, 
+ *
+ * A Course represents a subject, managed by a department,
  *  that students can subscribe to, learn and receive Grades for having learnt.
  *
  * @property int $id
@@ -36,38 +36,46 @@ class Course extends BaseModel
 
     protected $fillable = [ 'department_id', 'semester_type_id', 'level_id', 'code', 'title', 'credit' ];
 
-    public function department() {
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
   
-    public function semesterType() {
+    public function semesterType()
+    {
         return $this->belongsTo(SemesterType::class);
     }
 
-    public function level() {
+    public function level()
+    {
         return $this->belongsTo(Level::class);
     }
   
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->level()->pluck('school_id');
         return School::whereIn('id', $ids);
     }
 
-    public function scopeFaculty() {
+    public function scopeFaculty()
+    {
         $ids = $this->department()->pluck('faculty_id');
         return Faculty::whereIn('id', $ids);
     }
   
-    public function dependencies() {
+    public function dependencies()
+    {
         return $this->belongsToMany(self::class, CourseDependency::name(), 'course_id', 'dependency_id')
                     ->withTimestamps();
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->belongsToMany(Staff::class, StaffTeachCourse::name(), 'course_id', 'staff_id')->withTimestamps();
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->hasOne(CourseDependency::class)->get()->map(function ($dependency) {

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * CollegePortal\Models\BaseModel
- * 
+ *
  * The base class for all other models
  *
  * @mixin \Eloquent
@@ -24,7 +24,8 @@ class BaseModel extends Model
      *
      * @return string
      */
-    public static function name() {
+    public static function name()
+    {
         return with(new static)->getTable();
     }
 }

@@ -6,7 +6,7 @@ trait FullNameTrait
 {
     /**
      * Executed when the first_name property is set
-     * 
+     *
      * @param string $value
      */
     public function setFirstNameAttribute($value)
@@ -17,7 +17,7 @@ trait FullNameTrait
 
     /**
      * Executed when the last_name property is set
-     * 
+     *
      * @param string $value
      */
     public function setLastNameAttribute($value)
@@ -28,7 +28,7 @@ trait FullNameTrait
 
     /**
      * Executed when the other_names property is set
-     * 
+     *
      * @param string $value
      */
     public function setOtherNamesAttribute($value)
@@ -39,10 +39,11 @@ trait FullNameTrait
 
     /**
      * serves the name property which consists of first_name, last_name and other_names
-     * 
+     *
      * @param string $value
      */
-    public function getNameAttribute() {
+    public function getNameAttribute()
+    {
         $firstName = ucwords(strtolower($this->first_name));
         $lastName  = ucwords(strtolower($this->last_name));
         $otherNames  = $this->other_names ? (ucwords(strtolower($this->other_names)) + ' ') : '';

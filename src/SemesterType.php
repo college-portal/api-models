@@ -8,9 +8,9 @@ use CollegePortal\Models\School;
 
 /**
  * CollegePortal\Models\SemesterType
- * 
- * A Semester Type represents a group of Semesters, and 
- *  belonging to a School. 
+ *
+ * A Semester Type represents a group of Semesters, and
+ *  belonging to a School.
  * E.g. 1st Semester
  *
  * @property int $id
@@ -28,11 +28,13 @@ class SemesterType extends BaseModel
 {
     protected $fillable = [ 'name', 'school_id' ];
 
-    public function semesters() {
+    public function semesters()
+    {
         return $this->hasMany(Semester::class);
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 }

@@ -7,11 +7,11 @@ use CollegePortal\Models\InviteRole;
 
 /**
  * CollegePortal\Models\Invite
- * 
+ *
  * An Invite represents an invitation given by an administrator, or school-owner
  *  to a potential user, denoted by $email.
  * It may contain one or more roles.
- * 
+ *
  *
  * @property int $id
  * @property int $creator_id
@@ -30,15 +30,18 @@ class Invite extends BaseModel
 
     protected $fillable = [ 'creator_id', 'school_id', 'email', 'message' ];
 
-    public function roles() {
+    public function roles()
+    {
         return $this->hasMany(InviteRole::class);
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->roles()->get()->map(function ($role) {

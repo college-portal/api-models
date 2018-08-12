@@ -8,8 +8,8 @@ use CollegePortal\Models\Chargeable;
 
 /**
  * CollegePortal\Models\ChargeableService
- * 
- * A Chargeable Service represents the charges assigned to a model, 
+ *
+ * A Chargeable Service represents the charges assigned to a model,
  *  denoted by the $type property.
  *
  * @property int $id
@@ -30,19 +30,23 @@ class ChargeableService extends BaseModel
 {
     protected $fillable = [ 'type', 'name', 'description', 'amount', 'school_id' ];
 
-    public function chargeables() {
+    public function chargeables()
+    {
         return $this->hasMany(Chargeable::class);
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
     
-    public function scopeOwner($query, $owner_id) {
+    public function scopeOwner($query, $owner_id)
+    {
         return app($this->type)->where('id', $owner_id);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->chargeables()->get()->map(function ($chargeable) {

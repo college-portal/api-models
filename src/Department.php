@@ -12,7 +12,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\Department
- * 
+ *
  * A Department is a division within a Faculty comprising one or more study programs.
  *
  * @property int $id
@@ -32,65 +32,77 @@ class Department extends BaseModel
 {
     protected $fillable = [ 'name', 'hod_id', 'faculty_id' ];
 
-    public function faculty() {
+    public function faculty()
+    {
         return $this->belongsTo(Faculty::class);
     }
 
-    public function hod() {
+    public function hod()
+    {
         return $this->belongsTo(Staff::class, 'hod_id');
     }
 
-    public function hods() {
+    public function hods()
+    {
         return $this->belongsToMany(Staff::class, self::name(), 'id', 'hod_id');
     }
 
-    public function programs() {
+    public function programs()
+    {
         return $this->hasMany(Program::class);
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->hasMany(Staff::class);
     }
 
-    public function students() {
+    public function students()
+    {
         return $this->hasManyThrough(Student::class, Program::class);
     }
 
-    public function courses() {
+    public function courses()
+    {
         return $this->hasMany(Course::class);
     }
 
-    public function users() {
+    public function users()
+    {
         return $this->students()
             ->join(User::name(), 'students.user_id', '=', 'users.id')
-            ->select('users.id', 
-                    'users.display_name',  
-                    'users.created_at', 
-                    'users.updated_at'
-                )
+            ->select(
+                'users.id',
+                'users.display_name',
+                'users.created_at',
+                'users.updated_at'
+            )
                 ->union(
                     $this->hods()
                         ->join(User::name(), 'staff.user_id', '=', 'users.id')
-                        ->select('users.id', 
-                                    'users.display_name',  
-                                    'users.created_at', 
-                                    'users.updated_at',
-                                    'departments.id as department_id'
-                                )
+                        ->select(
+                            'users.id',
+                            'users.display_name',
+                            'users.created_at',
+                            'users.updated_at',
+                            'departments.id as department_id'
+                        )
                 )
                 ->union(
                     $this->staff()
                         ->join(User::name(), 'staff.user_id', '=', 'users.id')
-                        ->select('users.id', 
-                                    'users.display_name',  
-                                    'users.created_at', 
-                                    'users.updated_at',
-                                    'staff.department_id'
-                                )
+                        ->select(
+                            'users.id',
+                            'users.display_name',
+                            'users.created_at',
+                            'users.updated_at',
+                            'staff.department_id'
+                        )
                 );
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         $schoolHasUsersUpdate = function ($model) {
             $staff = Staff::with('user')->find($model->hod_id);

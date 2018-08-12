@@ -7,7 +7,7 @@ use CollegePortal\Models\Intent;
 
 /**
  * CollegePortal\Models\IntentType
- * 
+ *
  * An IntentType represents a group of intents.
  *
  * @property int $id
@@ -25,11 +25,13 @@ class IntentType extends BaseModel
 
     protected $fillable = [ 'name' ];
 
-    public function users() {
+    public function users()
+    {
         return $this->hasManyThrough(User::class, Intent::class, 'id', 'intent_type_id')->withTimestamps();
     }
 
-    public function intents() {
+    public function intents()
+    {
         return $this->hasMany(Intent::class, 'intent_type_id');
     }
 }

@@ -7,8 +7,8 @@ use CollegePortal\Models\IntentType;
 
 /**
  * CollegePortal\Models\Intent
- * 
- * An Intent represents an intention of a user to perform some action 
+ *
+ * An Intent represents an intention of a user to perform some action
  *  in the future, such as "change-password". Each belongs to a particular Intent Type.
  *
  * @property int $id
@@ -29,19 +29,21 @@ class Intent extends BaseModel
 
     protected $fillable = [ 'user_id', 'intent_type_id', 'extras' ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function type() {
+    public function type()
+    {
         return $this->belongsTo(IntentType::class, 'intent_type_id');
     }
 
-    public function setExtrasAttribute($value) {
+    public function setExtrasAttribute($value)
+    {
         if (!is_string($value)) {
             $this->attributes['extras'] = json_encode($value);
-        }
-        else {
+        } else {
             $this->attributes['extras'] = $value;
         }
     }

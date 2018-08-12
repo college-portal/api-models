@@ -12,7 +12,7 @@ use CollegePortal\Models\ProgramCredit;
 
 /**
  * CollegePortal\Models\Program
- * 
+ *
  * A Program represents a study-path a Student within a Department can take.
  *
  * @property int $id
@@ -31,33 +31,40 @@ class Program extends BaseModel
 {
     protected $fillable = [ 'name', 'department_id' ];
 
-    public function department() {
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
 
-    public function students() {
+    public function students()
+    {
         return $this->hasMany(Student::class);
     }
 
-    public function credits() {
+    public function credits()
+    {
         return $this->hasMany(ProgramCredit::class);
     }
 
-    public function prospects() {
+    public function prospects()
+    {
         return $this->hasMany(Prospect::class);
     }
 
-    public function scopeFaculty() {
+    public function scopeFaculty()
+    {
         $ids = $this->department()->pluck('faculty_id');
         return Faculty::whereIn('id', $ids);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->faculty()->pluck('school_id');
         return School::whereIn('id', $ids);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->students()->get()->map(function ($student) {

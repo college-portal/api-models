@@ -9,7 +9,7 @@ use CollegePortal\Models\Traits\ChargeableTrait;
 
 /**
  * CollegePortal\Models\Session
- * 
+ *
  * A Session represents an academic year. It could contain one or more semesters.
  *
  * @property int $id
@@ -29,15 +29,18 @@ class Session extends BaseModel
     use ChargeableTrait;
     protected $fillable = [ 'school_id', 'name', 'start_date', 'end_date' ];
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public function semesters() {
+    public function semesters()
+    {
         return $this->hasMany(Semester::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->semesters()->get()->map(function ($semester) {

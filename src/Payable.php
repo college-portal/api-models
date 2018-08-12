@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * CollegePortal\Models\Payable
- * 
- * A payable represents the fact that a user has to pay for a chargeable. 
+ *
+ * A payable represents the fact that a user has to pay for a chargeable.
  * - It should be hook for all Models that implement CollegePortal\Models\Traits\ChargeableTrait
  * - The hook should be executed before POSTs in the service, to check that no pending payable exists
  * - The POST operation should fail if such a payable exists
@@ -34,19 +34,23 @@ class Payable extends BaseModel
 
     protected $fillable = [ 'user_id', 'chargeable_id' ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function chargeable() {
+    public function chargeable()
+    {
         return $this->belongsTo(Chargeable::class);
     }
 
-    public function setIsPaidAttribute($value) {
+    public function setIsPaidAttribute($value)
+    {
         $this->paid_at = $value ? Carbon::now() : null;
     }
 
-    public function getIsPaidAttribute() {
+    public function getIsPaidAttribute()
+    {
         return !!$this->paid_at;
     }
 }

@@ -9,8 +9,8 @@ use CollegePortal\Models\Staff;
 
 /**
  * CollegePortal\Models\UserHasRole
- * 
- * A UserHasRole model represents the fact that a User, 
+ *
+ * A UserHasRole model represents the fact that a User,
  *  acts a particular Role, sometimes within a School.
  *
  * @property int $id
@@ -30,15 +30,18 @@ class UserHasRole extends BaseModel
     protected $fillable = [ 'user_id', 'role_id', 'school_id' ];
     protected $table = 'user_has_roles';
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 }

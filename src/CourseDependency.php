@@ -7,8 +7,8 @@ use CollegePortal\Models\Course;
 
 /**
  * CollegePortal\Models\CourseDependency
- * 
- * Course Dependencies point to courses a students needs to have passed 
+ *
+ * Course Dependencies point to courses a students needs to have passed
  *  before he/she can subscribe to a course.
  * E.g. You must pass MATH 101 to subscribe to MATH 201
  *
@@ -25,11 +25,13 @@ class CourseDependency extends BaseModel
 {
     protected $fillable = [ 'course_id', 'dependency_id' ];
 
-    public function course() {
+    public function course()
+    {
         return $this->belongsTo(Course::class);
     }
 
-    public function dependency() {
+    public function dependency()
+    {
         return $this->belongsTo(Course::class, 'dependency_id');
     }
 }

@@ -6,7 +6,7 @@ use CollegePortal\Models\BaseModel;
 
 /**
  * CollegePortal\Models\Role
- * 
+ *
  * A Role is a part or function a user a system plays within this system. See role names below:
  *
  * @property int $id
@@ -33,7 +33,8 @@ class Role extends BaseModel
 
     protected $fillable = [ 'name', 'display_name' ];
 
-    public function isAdmin() {
+    public function isAdmin()
+    {
         return $this->name == self::ADMIN;
     }
 }

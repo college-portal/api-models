@@ -9,7 +9,8 @@ trait ModelTableNameTrait
      *
      * @return string
      */
-    public static function name() {
+    public static function name()
+    {
         return with(new static)->getTable();
     }
 }

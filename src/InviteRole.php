@@ -7,7 +7,7 @@ use CollegePortal\Models\Invite;
 
 /**
  * CollegePortal\Models\InviteRole
- * 
+ *
  * An Invite Role represents the role an invited potential is supposed to assume in the system.
  *
  * @property int $id
@@ -26,20 +26,22 @@ class InviteRole extends BaseModel
 
     protected $fillable = [ 'invite_id', 'role_id', 'extras' ];
 
-    public function invite() {
+    public function invite()
+    {
         return $this->belongsTo(Invite::class);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->invite()->pluck('school_id');
         return School::whereIn('id', $ids);
     }
 
-    public function setExtrasAttribute($value) {
+    public function setExtrasAttribute($value)
+    {
         if (!is_string($value)) {
             $this->attributes['extras'] = json_encode($value);
-        }
-        else {
+        } else {
             $this->attributes['extras'] = $value ?? '{}';
         }
     }

@@ -11,7 +11,7 @@ use CollegePortal\Models\School;
 
 /**
  * CollegePortal\Models\Chargeable
- * 
+ *
  * A Chargeable represents a particular cost/charge for a chargeable service.
  *
  * @property int $id
@@ -35,28 +35,34 @@ class Chargeable extends BaseModel
 
     protected $fillable = [ 'chargeable_service_id', 'owner_id', 'amount' ];
 
-    public function service() {
+    public function service()
+    {
         return $this->belongsTo(ChargeableService::class, 'chargeable_service_id');
     }
 
-    private function services() {
+    private function services()
+    {
         return $this->belongsToMany(ChargeableService::class, self::class, 'id', 'chargeable_service_id');
     }
 
-    public function scopeOwner() {
+    public function scopeOwner()
+    {
         return app($this->service()->first()->type)->where('id', $this->owner_id);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->service()->pluck('school_id');
         return School::whereIn('id', $ids);
     }
 
-    public function payables() {
+    public function payables()
+    {
         return $this->hasMany(Payable::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->payables()->get()->map(function ($payable) {

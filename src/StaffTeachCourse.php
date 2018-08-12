@@ -10,7 +10,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\StaffTeachCourse
- * 
+ *
  * A StaffTeachCourse model represents the fact that a Staff teaches a particular Course.
  *
  * @property int $id
@@ -30,28 +30,34 @@ class StaffTeachCourse extends BaseModel
 {
     protected $fillable = [ 'staff_id', 'course_id', 'semester_id' ];
 
-    public function course() {
+    public function course()
+    {
         return $this->belongsTo(Course::class);
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->belongsTo(Staff::class);
     }
 
-    public function semester() {
+    public function semester()
+    {
         return $this->belongsTo(Semester::class);
     }
 
-    public function studentTakesCourse() {
+    public function studentTakesCourse()
+    {
         return $this->hasMany(StudentTakesCourse::class, 'staff_teach_course_id');
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->staff()->pluck('school_id');
         return School::whereIn('id', $ids);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->studentTakesCourse()->get()->map(function ($studentCourse) {

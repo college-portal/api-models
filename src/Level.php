@@ -9,7 +9,7 @@ use CollegePortal\Models\BaseModel;
 
 /**
  * CollegePortal\Models\Level
- * 
+ *
  * A Level represents a year within the school system.
  *
  * @property int $id
@@ -27,19 +27,23 @@ class Level extends BaseModel
 {
     protected $fillable = [ 'name', 'school_id' ];
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public function courses() {
+    public function courses()
+    {
         return $this->hasMany(Course::class);
     }
 
-    public function programCredits() {
+    public function programCredits()
+    {
         return $this->hasMany(ProgramCredit::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::deleting(function ($model) {
             $model->programCredits()->get()->map(function ($programCredit) {

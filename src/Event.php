@@ -7,7 +7,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\Event
- * 
+ *
  * Not Implemented Yet
  *
  * @property int $id
@@ -25,7 +25,8 @@ use CollegePortal\Models\User;
  */
 class Event extends BaseModel
 {
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

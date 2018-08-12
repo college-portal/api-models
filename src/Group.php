@@ -7,7 +7,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\Group
- * 
+ *
  * Not Implemented Yet!
  *
  * @property int $id
@@ -20,7 +20,8 @@ use CollegePortal\Models\User;
  */
 class Group extends BaseModel
 {
-    public function owner() {
+    public function owner()
+    {
         return $this->belongsTo(User::class);
     }
 }

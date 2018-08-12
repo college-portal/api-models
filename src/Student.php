@@ -11,7 +11,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\Student
- * 
+ *
  * A Student represents a user with a "student" role within a School
  *
  * @property int $id
@@ -31,35 +31,42 @@ class Student extends BaseModel
 {
     protected $fillable = [ 'user_id', 'program_id', 'matric_no' ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function program() {
+    public function program()
+    {
         return $this->belongsTo(Program::class);
     }
 
-    public function courses() {
+    public function courses()
+    {
         return $this->hasManyThrough(Course::class, StudentTakesCourse::class, 'id', 'course_id');
     }
 
-    public function scopeDepartment() {
+    public function scopeDepartment()
+    {
         $ids = $this->program()->pluck('department_id');
         return Department::where('id', $ids);
     }
 
-    public function scopeFaculty() {
+    public function scopeFaculty()
+    {
         $ids = $this->department()->pluck('faculty_id');
         return Faculty::where('id', $ids);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->faculty()->pluck('school_id');
         return School::where('id', $ids);
     }
 
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         $studentRoleCreate = function ($model) {
             $school = $model->program()->first()->department()->first()

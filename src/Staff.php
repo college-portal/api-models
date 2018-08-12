@@ -13,7 +13,7 @@ use CollegePortal\Models\User;
 
 /**
  * CollegePortal\Models\Staff
- * 
+ *
  * A staff represents a User having a "staff" role within a School
  *
  * @property int $id
@@ -34,28 +34,34 @@ class Staff extends BaseModel
 {
     protected $fillable = [ 'title', 'school_id', 'department_id', 'user_id' ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function department() {
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
 
-    public function courses() {
+    public function courses()
+    {
         return $this->hasManyThrough(Course::class, StaffTeachCourse::class)->withTimestamps();
     }
 
-    public function school() {
+    public function school()
+    {
         return $this->belongsTo(School::class);
     }
 
-    public function scopeFaculty() {
+    public function scopeFaculty()
+    {
         $ids = $this->department()->pluck('faculty_id');
         return Faculty::whereIn('id', $ids);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         self::created(function ($model) {
             $school = $model->school()->first();

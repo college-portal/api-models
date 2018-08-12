@@ -10,7 +10,7 @@ use CollegePortal\Models\SemesterType;
 
 /**
  * CollegePortal\Models\ProgramCredit
- * 
+ *
  * A Program Credit represents the maximum number of credits a Student within a Level can take in a Semester.
  *
  * @property int $id
@@ -31,19 +31,23 @@ class ProgramCredit extends BaseModel
 {
     protected $fillable = [ 'program_id', 'semester_id', 'level_id', 'credit' ];
 
-    public function program() {
+    public function program()
+    {
         return $this->belongsTo(Program::class);
     }
 
-    public function semester() {
+    public function semester()
+    {
         return $this->belongsTo(Semester::class);
     }
 
-    public function level() {
+    public function level()
+    {
         return $this->belongsTo(Level::class);
     }
 
-    public function scopeSchool() {
+    public function scopeSchool()
+    {
         $ids = $this->level()->pluck('levels.school_id');
         return School::whereIn('id', $ids);
     }
