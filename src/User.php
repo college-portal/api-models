@@ -3,6 +3,12 @@
 namespace CollegePortal\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use CollegePortal\Models\Traits\ModelTableNameTrait;
 use CollegePortal\Models\Traits\FullNameTrait;
 use CollegePortal\Models\Traits\AuthorizableTrait;
@@ -48,9 +54,13 @@ use CollegePortal\Models\Intent;
  * @method static \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\ChargeableService whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends BaseModel
+class User extends BaseModel implements
+    AuthenticatableContract,
+    AuthorizableContract,
+    CanResetPasswordContract
 {
-    use Notifiable, ModelTableNameTrait, FullNameTrait, AuthorizableTrait;
+    use Notifiable, ModelTableNameTrait, FullNameTrait, AuthorizableTrait,
+        Authenticatable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
