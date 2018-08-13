@@ -6,6 +6,7 @@ use CollegePortal\Models\BaseModel;
 use CollegePortal\Models\Content;
 use CollegePortal\Models\School;
 use CollegePortal\Models\Traits\ContentTypeTrait;
+use CollegePortal\Models\Traits\ModelListTrait;
 
 /**
  * CollegePortal\Models\ContentType
@@ -42,7 +43,7 @@ use CollegePortal\Models\Traits\ContentTypeTrait;
 
 class ContentType extends BaseModel
 {
-    use ContentTypeTrait;
+    use ContentTypeTrait, ModelListTrait;
 
     const STRING = 'string';
     const BOOLEAN = 'boolean';
