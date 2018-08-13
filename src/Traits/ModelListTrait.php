@@ -27,7 +27,7 @@ use CollegePortal\Models\ImageType;
 trait ModelListTrait
 {
     /**
-     * Returns a list of Model class names
+     * Returns a list of all Model class names besides BaseModel
      *
      * @return array
      */
