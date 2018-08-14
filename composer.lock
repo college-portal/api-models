@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fadd7d71dfc2b8a00f2196b10e0a469f",
+    "content-hash": "f666cea2c3ea0ac5a605b093a499a2bf",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -994,12 +994,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mykeels/laravel-filters.git",
-                "reference": "a90bc9b89c293ea7747650ff617159eaae37de4c"
+                "reference": "844c9c7eee2dae70bb12901506f6f8ffbf953509"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mykeels/laravel-filters/zipball/a90bc9b89c293ea7747650ff617159eaae37de4c",
-                "reference": "a90bc9b89c293ea7747650ff617159eaae37de4c",
+                "url": "https://api.github.com/repos/mykeels/laravel-filters/zipball/844c9c7eee2dae70bb12901506f6f8ffbf953509",
+                "reference": "844c9c7eee2dae70bb12901506f6f8ffbf953509",
                 "shasum": ""
             },
             "require": {
@@ -1008,6 +1008,7 @@
                 "illuminate/support": "^5.6"
             },
             "require-dev": {
+                "phpstan/phpstan": "^0.10.3",
                 "squizlabs/php_codesniffer": "^3.3"
             },
             "type": "library",
@@ -1032,7 +1033,7 @@
                 }
             ],
             "description": "Provides a composable interface for data filtering with query strings",
-            "time": "2018-08-06T23:24:58+00:00"
+            "time": "2018-08-14T19:37:12+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2778,16 +2779,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.2",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d69658794514e57ad9f247e623513397038f362f"
+                "reference": "dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d69658794514e57ad9f247e623513397038f362f",
-                "reference": "d69658794514e57ad9f247e623513397038f362f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0",
+                "reference": "dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0",
                 "shasum": ""
             },
             "require": {
@@ -2843,7 +2844,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2018-07-22T17:55:11+00:00"
+            "time": "2018-08-12T15:14:21+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
