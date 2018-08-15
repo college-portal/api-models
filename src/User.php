@@ -90,11 +90,14 @@ class User extends BaseModel implements
         return $this->belongsToMany(IntentType::class, Intent::name())->withTimestamps();
     }
 
-    public function scopeSchools()
+    public function schools()
     {
-        return $this->hasRole(Role::ADMIN) ?
-                School::query() :
-                $this->belongsToMany(School::class, UserHasRole::name())->withTimestamps();
+        return $this->belongsToMany(School::class, UserHasRole::name())->withTimestamps();
+    }
+
+    public function scopeViewableSchools()
+    {
+        return $this->hasRole(Role::ADMIN) ? School::query() : $this->schools();
     }
 
     public function scopeUsers()
@@ -105,9 +108,9 @@ class User extends BaseModel implements
             /** get users in schools that intersect with the current user's */
             $table_name = UserHasRole::name();
             $ids = $this->schools()->pluck('schools.id');
-            return $this->whereHas('schools', function ($q) use ($ids) {
+            return User::whereHas('schools', function ($q) use ($ids) {
                 return $q->whereIn('schools.id', $ids);
-            })->where('users.id', '!=', $this->id)->with('staff');
+            });
         }
     }
 
