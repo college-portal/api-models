@@ -24,13 +24,17 @@ trait ContentableTrait
      *
      * @return \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Content
      */
-    public function createContent($name, $value)
+    public function createContent($name, $value, $school_id = null)
     {
-        $type = ContentType::where('name', $name)->firstOrFail();
+        $q = ContentType::where('name', $name);
+        if ($q) {
+            $q = $q->where('school_id', $school_id);
+        }
+        $type = $q->firstOrFail();
         if ($type->format == ContentType::ARRAY) {
             if (!$this->contents()->where('content_type_id', $type->id)->where('value', $value)->exists()) {
                 return $this->contents()->create([
-                    'content_type_id', $type->id,
+                    'content_type_id' => $type->id,
                     'value' => $value
                 ]);
             } else {
@@ -39,7 +43,7 @@ trait ContentableTrait
         } else {
             if (!$this->contents()->where('content_type_id', $type->id)->exists()) {
                 return $this->contents()->create([
-                    'content_type_id', $type->id,
+                    'content_type_id' => $type->id,
                     'value' => $value
                 ]);
             } else {
