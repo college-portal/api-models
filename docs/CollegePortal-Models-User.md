@@ -9,7 +9,7 @@ The base class for all other models
 * Class name: User
 * Namespace: CollegePortal\Models
 * Parent class: [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
-
+* This class implements: Illuminate\Contracts\Auth\Authenticatable, Illuminate\Contracts\Auth\Access\Authorizable, Illuminate\Contracts\Auth\CanResetPassword
 
 
 
@@ -213,9 +213,22 @@ Methods
 
 
 
-### scopeSchools
+### schools
 
-    mixed CollegePortal\Models\User::scopeSchools()
+    mixed CollegePortal\Models\User::schools()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
+### scopeViewableSchools
+
+    mixed CollegePortal\Models\User::scopeViewableSchools()
 
 
 
@@ -586,7 +599,7 @@ Methods
 
 ### boot
 
-    mixed CollegePortal\Models\BaseModel::boot()
+    mixed CollegePortal\Models\User::boot()
 
 
 
@@ -594,7 +607,6 @@ Methods
 
 * Visibility: **public**
 * This method is **static**.
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
 
 
 
@@ -692,17 +704,54 @@ Authorize a given action for a user.
 
 
 
-### contents
+### can
 
-    \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Content CollegePortal\Models\BaseModel::contents()
+    boolean CollegePortal\Models\User::can(string $ability, array|mixed $arguments)
 
-Returns a query builder for CollegePortal\Models\Content
+Determine if the entity has a given ability.
 
 
 
 * Visibility: **public**
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
 
+
+#### Arguments
+* $ability **string**
+* $arguments **array|mixed**
+
+
+
+### cant
+
+    boolean CollegePortal\Models\User::cant(string $ability, array|mixed $arguments)
+
+Determine if the entity does not have a given ability.
+
+
+
+* Visibility: **public**
+
+
+#### Arguments
+* $ability **string**
+* $arguments **array|mixed**
+
+
+
+### cannot
+
+    boolean CollegePortal\Models\User::cannot(string $ability, array|mixed $arguments)
+
+Determine if the entity does not have a given ability.
+
+
+
+* Visibility: **public**
+
+
+#### Arguments
+* $ability **string**
+* $arguments **array|mixed**
 
 
 

@@ -156,35 +156,6 @@ Returns the table name for the Model
 
 
 
-### contents
-
-    \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Content CollegePortal\Models\BaseModel::contents()
-
-Returns a query builder for CollegePortal\Models\Content
-
-
-
-* Visibility: **public**
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
-
-
-
-
-### boot
-
-    mixed CollegePortal\Models\BaseModel::boot()
-
-
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
-
-
-
-
 ### assets
 
     \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Asset CollegePortal\Models\BaseModel::assets()

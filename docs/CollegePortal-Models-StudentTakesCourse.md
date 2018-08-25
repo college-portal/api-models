@@ -193,7 +193,7 @@ Methods
 
 ### boot
 
-    mixed CollegePortal\Models\BaseModel::boot()
+    mixed CollegePortal\Models\StudentTakesCourse::boot()
 
 
 
@@ -201,7 +201,6 @@ Methods
 
 * Visibility: **public**
 * This method is **static**.
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
 
 
 
@@ -216,20 +215,6 @@ Returns the table name for the Model
 
 * Visibility: **public**
 * This method is **static**.
-* This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
-
-
-
-
-### contents
-
-    \Illuminate\Database\Eloquent\Builder|\CollegePortal\Models\Content CollegePortal\Models\BaseModel::contents()
-
-Returns a query builder for CollegePortal\Models\Content
-
-
-
-* Visibility: **public**
 * This method is defined by [CollegePortal\Models\BaseModel](CollegePortal-Models-BaseModel.md)
 
 
