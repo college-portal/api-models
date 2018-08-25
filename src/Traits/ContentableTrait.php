@@ -33,19 +33,16 @@ trait ContentableTrait
                     'content_type_id', $type->id,
                     'value' => $value
                 ]);
-            }
-            else {
+            } else {
                 $this->contents()->where('content_type_id', $type->id)->where('value', $value)->firstOrFail();
             }
-        }
-        else {
+        } else {
             if (!$this->contents()->where('content_type_id', $type->id)->exists()) {
                 return $this->contents()->create([
                     'content_type_id', $type->id,
                     'value' => $value
                 ]);
-            }
-            else {
+            } else {
                 $content = $this->contents()->where('content_type_id', $type->id)->firstOrFail();
                 $content->value = $value;
                 $content->save();
